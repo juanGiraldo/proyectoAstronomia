@@ -10,7 +10,7 @@ LM = datos[~ii,1:3]
 print np.shape(HM)
 
 
-bins=np.linspace(1E-4,10.0,30)
+bins=np.linspace(1E-4,10.0,300)
 cr1=two_point(LM,bins)
 cr2=two_point(HM,bins)
 plt.figure(1)
