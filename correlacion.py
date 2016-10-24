@@ -14,13 +14,12 @@ xerr=np.transpose(error[:,2:4])
 yerr=np.transpose(error[:,4:])
 x=points[:30,0]
 y=points[:30,1]
-print np.shape(x),np.shape(y),np.shape(xerr),np.shape(yerr), type(datos)
-#print error[0,2:4],error[0,4:]
 
 
 bins=np.linspace(1E-4,10.0,30)
-cr1=two_point(LM,bins)
-cr2=two_point(HM,bins)
+cr1=two_point(LM,bins,method='landy-szalay')
+cr2=two_point(HM,bins,method='landy-szalay')
+print np.shape(cr1),np.shape(cr2)
 plt.figure(1)
 plt.plot(cr1,label="masas bajas simulacion")
 #plt.scatter(x+5,y)
@@ -29,5 +28,7 @@ plt.plot(cr2,label="masas altas simulacion")
 #plt.xscale("log")
 plt.yscale("log")
 plt.title("correlacion de masas")
+plt.xlabel(r'$s[h^{-1} Mpc]$')
+plt.ylabel(r'$\xi(s)$')
 plt.legend (loc='best')
 plt.savefig("correlacion_masas_con_error2.pdf")
